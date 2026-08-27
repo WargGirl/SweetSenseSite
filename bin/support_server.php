@@ -2,8 +2,8 @@
 
 require_once dirname(__DIR__) . '/classes/Database.php';
 
-$host = '0.0.0.0';
-$port = (int)(getenv('WS_PORT') ?: 8080);
+$host = '127.0.0.1';
+$port = 8080;
 
 try {
     $db = new Database();
