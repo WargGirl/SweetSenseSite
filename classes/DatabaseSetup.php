@@ -6,30 +6,43 @@ class DatabaseSetup
     private string $user;
     private string $password;
     private string $database;
+    private int $port;
     private string $charset;
     private ?PDO $pdo = null;
 
     public function __construct(
-        string $host = '127.0.0.1',
-        string $user = 'root',
-        string $password = '',
-        string $database = 'sweetsense_db',
+        ?string $host = null,
+        ?string $user = null,
+        ?string $password = null,
+        ?string $database = null,
+        ?int $port = null,
         string $charset = 'utf8mb4'
     ) {
-        $this->host = $host;
-        $this->user = $user;
-        $this->password = $password;
-        $this->database = $database;
-        $this->charset = $charset;
+        $this->host     = $host     ?? getenv('DB_HOST') ?: '127.0.0.1';
+        $this->user     = $user     ?? getenv('DB_USER') ?: 'root';
+        $this->password = $password ?? getenv('DB_PASS') ?: '';
+        $this->database = $database ?? getenv('DB_NAME') ?: (getenv('RAILWAY_ENVIRONMENT') ? 'railway' : 'sweetsense_db');
+        $this->port     = $port     ?? (int)(getenv('DB_PORT') ?: 3306);
+        $this->charset  = $charset;
 
         try {
-            $serverPdo = $this->createConnection();
-            $serverPdo->exec(
-                "CREATE DATABASE IF NOT EXISTS `{$this->database}` " .
-                "CHARACTER SET {$this->charset} COLLATE utf8mb4_unicode_ci"
-            );
+            if (!getenv('RAILWAY_ENVIRONMENT')) {
+                try {
+                    $serverPdo = new PDO(
+                        "mysql:host={$this->host};port={$this->port};charset={$this->charset}",
+                        $this->user,
+                        $this->password,
+                        [PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION]
+                    );
+                    $serverPdo->exec(
+                        "CREATE DATABASE IF NOT EXISTS `{$this->database}` " .
+                        "CHARACTER SET {$this->charset} COLLATE utf8mb4_unicode_ci"
+                    );
+                } catch (PDOException $e) {
+                }
+            }
 
-            $this->pdo = $this->createConnection(true);
+            $this->pdo = $this->createConnection();
             $this->createTables();
             $this->pdo->beginTransaction();
             $this->seedData();
@@ -44,19 +57,16 @@ class DatabaseSetup
 
             echo "<div style='background-color: #fee2e2; border: 1px solid #ef4444; color: #b91c1c; padding: 20px; border-radius: 8px; font-family: sans-serif; max-width: 650px; margin: 40px auto; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);'>
                     <h3 style='margin-top: 0;'>Помилка ініціалізації бази даних</h3>
-                    <p>Неможливо створити або ініціалізувати базу даних <strong>{$this->database}</strong>.</p>
+                    <p>Неможливо створити або ініціалізувати базу даних <strong>{$this->database}</strong> (хост: {$this->host}:{$this->port}).</p>
                     <p style='font-size: 13px; color: #7f1d1d;'><strong>Код помилки:</strong> {$errorCode}<br><strong>Деталі:</strong> {$errorMessage}</p>
                   </div>";
             exit;
         }
     }
 
-    private function createConnection(bool $withDatabase = false): PDO
+    private function createConnection(): PDO
     {
-        $dsn = "mysql:host={$this->host};charset={$this->charset}";
-        if ($withDatabase) {
-            $dsn = "mysql:host={$this->host};dbname={$this->database};charset={$this->charset}";
-        }
+        $dsn = "mysql:host={$this->host};port={$this->port};dbname={$this->database};charset={$this->charset}";
 
         return new PDO($dsn, $this->user, $this->password, [
             PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
