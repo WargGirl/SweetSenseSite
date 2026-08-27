@@ -13,9 +13,8 @@ function initWebSocket() {
     }
 
     const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
-    
-    const protocol = window.location.protocol === 'https:' ? 'wss:' : 'ws:';
-    const wsUrl = `${protocol}//${window.location.host}`;
+
+    const wsUrl = isLocal ? 'ws://127.0.0.1:8080' : `wss://${window.location.host}/ws`;
 
     try {
         ws = new WebSocket(wsUrl);
