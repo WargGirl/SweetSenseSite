@@ -12,7 +12,17 @@ function initWebSocket() {
         return;
     }
 
-    ws = new WebSocket('ws://127.0.0.1:8080');
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    
+    const wsUrl = isLocal ? 'ws://127.0.0.1:8080' : `wss://${window.location.host}/ws`;
+
+    try {
+        ws = new WebSocket(wsUrl);
+    } catch (e) {
+        console.warn('WebSocket connection error:', e);
+    }
+
+    if (!ws) return;
 
     ws.onopen = function () {
         ws.send(JSON.stringify({
@@ -47,6 +57,15 @@ function initWebSocket() {
             console.error('[WS Parse Error]:', err);
         }
     };
+
+    ws.onclose = function () {
+        setTimeout(initWebSocket, 4000);
+    };
+
+    ws.onerror = function (err) {
+        if (ws) ws.close();
+    };
+}
 
     ws.onclose = function () {
         setTimeout(initWebSocket, 3000);
