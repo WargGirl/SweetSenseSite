@@ -89,7 +89,6 @@ class XmlBackupService {
             xml_parse($this->parser, $chunk, feof($fp));
         }
         fclose($fp);
-        xml_parser_free($this->parser);
 
         if (empty($this->parsedUsers)) {
             return '<p>Бекап порожній.</p>';
