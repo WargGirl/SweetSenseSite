@@ -190,6 +190,14 @@ class DatabaseSetup
 
     private function seedData(): void
     {
+        $passwordHash = password_hash('password123', PASSWORD_BCRYPT);
+        $userStmt = $this->pdo->prepare(
+            'INSERT IGNORE INTO users (username, email, password_hash, display_name, role) VALUES (?, ?, ?, ?, ?)'
+        );
+        
+        $userStmt->execute(['admin', 'admin@sweetsense.com', $passwordHash, 'Адміністратор', 'admin']);
+        $userStmt->execute(['user', 'user@sweetsense.com', $passwordHash, 'Тестовий Користувач', 'user']);
+        
         $categories = [
             ['Випічка', 'Baking'],
             ['Торти', 'Cakes'],
