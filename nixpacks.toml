@@ -1,5 +1,5 @@
 [phases.setup]
-nixPkgs = ["php82", "php82Packages.composer"]
+nixPkgs = ["php82", "php82Packages.composer", "caddy"]
 
 [start]
-cmd = "php bin/support_server.php & php -S 0.0.0.0:$PORT router.php"
+cmd = "php bin/support_server.php & php -S 127.0.0.1:8000 router.php & caddy run --config Caddyfile --adapter caddyfile"
