@@ -4,13 +4,20 @@ require_once __DIR__ . '/DatabaseException.php';
 
 class Database {
     private ?PDO $connection = null;
-    private string $host = '127.0.0.1';
-    private string $user = 'root';
-    private string $password = '';
-    private string $database = 'sweetsense_db';
+    private string $host;
+    private string $user;
+    private string $password;
+    private string $database;
+    private int $port;
     private string $charset = 'utf8mb4';
 
-    public function __construct(){
+    public function __construct() {
+        $this->host     = getenv('DB_HOST') ?: '127.0.0.1';
+        $this->user     = getenv('DB_USER') ?: 'root';
+        $this->password = getenv('DB_PASS') ?: '';
+        $this->database = getenv('DB_NAME') ?: 'railway';
+        $this->port     = (int)(getenv('DB_PORT') ?: 3306);
+
         $this->connect();
     }
 
@@ -19,7 +26,7 @@ class Database {
             return;
         }
 
-        $dsn = "mysql:host={$this->host};dbname={$this->database};charset={$this->charset}";
+        $dsn = "mysql:host={$this->host};port={$this->port};dbname={$this->database};charset={$this->charset}";
         
         $options = [
             PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
@@ -129,7 +136,11 @@ class Database {
             $e->getMessage()
         );
 
-        error_log($logMessage, 3, __DIR__ . '/../logs/db_errors.log');
+        $logsDir = __DIR__ . '/../logs';
+        if (!is_dir($logsDir)) {
+            @mkdir($logsDir, 0777, true);
+        }
+        @error_log($logMessage, 3, $logsDir . '/db_errors.log');
     }
 
     public function __destruct() {
