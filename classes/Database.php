@@ -36,6 +36,7 @@ class Database {
 
         try {
             $this->connection = new PDO($dsn, $this->user, $this->password, $options);
+            $this->connection->exec("SET sql_mode=(SELECT REPLACE(@@sql_mode,'ONLY_FULL_GROUP_BY',''))");
         } catch (PDOException $e) {
             throw new DatabaseException("Помилка підключення через PDO: " . $e->getMessage(), (int)$e->getCode(), $e);
         }
