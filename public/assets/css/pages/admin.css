@@ -1,0 +1,369 @@
+/* ==========================================================================
+   Admin Layout
+   ========================================================================== */
+.admin-container {
+    max-width: 1200px;
+    width: 100%;
+    margin: 30px auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.admin-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    gap: 20px;
+}
+
+.admin-btn-create {
+    white-space: nowrap;
+    padding: 12px 24px;
+    text-align: center;
+    box-sizing: border-box;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+
+/* ==========================================================================
+   Tabs Navigation (Fix: прибираємо синій колір і підкреслення <a>)
+   ========================================================================== */
+.admin-tabs {
+    display: flex;
+    gap: 15px;
+    border-bottom: 2px solid #e0e0e0;
+    margin-bottom: 25px;
+}
+
+.tab-btn {
+    min-width: 160px;
+    padding: 12px 20px;
+    text-align: center;
+    border: none;
+    background: none;
+    font-size: 16px;
+    cursor: pointer;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s ease;
+    box-sizing: border-box;
+    white-space: nowrap;
+    text-decoration: none;
+    color: #334155;
+    display: inline-block;
+}
+
+.tab-btn:hover {
+    color: #d97706;
+    text-decoration: none;
+}
+
+.tab-btn.active {
+    border-bottom-color: #d97706;
+    font-weight: bold;
+    color: #d97706;
+    text-decoration: none;
+}
+
+/* ==========================================================================
+   Controls & Filters
+   ========================================================================== */
+.table-controls {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 20px;
+    align-items: center;
+}
+
+.search-input {
+    flex: 1;
+    height: 42px;
+    padding: 0 14px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+}
+
+.filter-group {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    flex-shrink: 0;
+}
+
+.filter-label {
+    white-space: nowrap;
+    font-size: 14px;
+}
+
+.sort-select {
+    width: 290px;
+    height: 42px;
+    padding: 0 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    background-color: #fff;
+    font-size: 14px;
+    box-sizing: border-box;
+    cursor: pointer;
+    flex-shrink: 0;
+}
+
+.admin-btn-add {
+    min-width: 200px;
+    height: 42px;
+    padding: 0 18px;
+    white-space: nowrap;
+    box-sizing: border-box;
+    flex-shrink: 0;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background: #c2185b;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.admin-btn-add:hover {
+    background: #d81b60;
+    color: #ffffff;
+    text-decoration: none;
+    transform: translateY(-1px);
+}
+
+.admin-btn-add-sm {
+    min-width: 110px;
+    height: 42px;
+    padding: 0 18px;
+    text-align: center;
+    box-sizing: border-box;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    background: #f1f5f9;
+    color: #334155;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+.admin-btn-add-sm:hover {
+    background: #e2e8f0;
+    border-color: #94a3b8;
+}
+
+/* ==========================================================================
+   Base Table Layout (100% Proportions)
+   ========================================================================== */
+.admin-table {
+    width: 100%;
+    table-layout: fixed;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+}
+
+.admin-table th,
+.admin-table td {
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid #f0f0f0;
+    vertical-align: middle;
+    box-sizing: border-box;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.admin-table th {
+    background-color: #f8fafc;
+    font-weight: 600;
+    color: #334155;
+    font-size: 14px;
+}
+
+/* Columns */
+.table-ingredients .col-ing-id     { width: 8%; text-align: center; }
+.table-ingredients .col-ing-uk     { width: 32%; text-align: left; }
+.table-ingredients .col-ing-en     { width: 32%; text-align: left; }
+.table-ingredients .col-ing-linked { width: 16%; text-align: left; }
+.table-ingredients .col-ing-act    { width: 12%; text-align: center; }
+
+.table-categories .col-cat-id      { width: 10%; text-align: center; }
+.table-categories .col-cat-uk      { width: 40%; text-align: left; }
+.table-categories .col-cat-en      { width: 40%; text-align: left; }
+.table-categories .col-cat-act     { width: 10%; text-align: center; }
+
+.table-users .col-u-id             { width: 6%; text-align: center; }
+.table-users .col-u-name           { width: 24%; text-align: left; }
+.table-users .col-u-date           { width: 18%; text-align: left; }
+.table-users .col-u-status         { width: 14%; text-align: left; }
+.table-users .col-u-warn           { width: 18%; text-align: left; }
+.table-users .col-u-act            { width: 20%; text-align: center; }
+
+/* ==========================================================================
+   Buttons, Badges & Links
+   ========================================================================== */
+.btn-icon {
+    border: none;
+    background: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px 6px;
+    border-radius: 4px;
+    transition: background-color 0.15s ease;
+}
+
+.admin-table a.btn-icon {
+    display: inline-block;
+    color: inherit;
+    text-decoration: none;
+    line-height: 1;
+}
+
+.admin-table a.btn-icon:hover {
+    text-decoration: none;
+}
+
+.btn-icon:hover:not(:disabled) {
+    background-color: #f1f5f9;
+}
+
+.btn-disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.badge {
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    display: inline-block;
+    white-space: nowrap;
+}
+
+.badge-info { background-color: #e0f2fe; color: #0369a1; }
+.badge-warning { background-color: #fef3c7; color: #b45309; }
+.badge-muted { background-color: #f3f4f6; color: #6b7280; }
+
+.status-active {
+    color: #16a34a;
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+.status-banned {
+    color: #dc2626;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+.link-profile-btn {
+    display: inline-block;
+    color: #4f46e5;
+    text-decoration: none;
+    font-weight: 500;
+    font-size: 14px;
+    white-space: nowrap;
+}
+
+.link-profile-btn:hover {
+    text-decoration: underline;
+}
+
+.admin-feedback {
+    margin-bottom: 18px;
+    padding: 12px 16px;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.admin-feedback-success {
+    background: #ecfdf5;
+    border: 1px solid #86efac;
+    color: #166534;
+}
+
+.admin-feedback-error {
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
+    color: #b91c1c;
+}
+
+.ingredient-editor {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    margin: -4px 0 20px;
+    padding: 14px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+.ingredient-editor input {
+    flex: 1;
+    min-width: 0;
+    height: 40px;
+    padding: 0 12px;
+    border: 1px solid #d1d5db;
+    border-radius: 6px;
+    font-size: 14px;
+}
+
+.admin-table small {
+    color: #64748b;
+    font-size: 12px;
+}
+
+.ingredient-editor .btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-width: 132px;
+    height: 40px;
+    padding: 0 18px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.ingredient-editor .btn-primary {
+    border: 1px solid #c2185b;
+    background: #c2185b;
+    color: #ffffff;
+}
+
+.ingredient-editor .btn-primary:hover {
+    border-color: #d81b60;
+    background: #d81b60;
+    color: #ffffff;
+}
+
+.ingredient-editor .btn-secondary {
+    border: 1px solid #cbd5e1;
+    background: #f1f5f9;
+    color: #334155;
+}
+
+.ingredient-editor .btn-secondary:hover {
+    border-color: #94a3b8;
+    background: #e2e8f0;
+    color: #1e293b;
+    text-decoration: none;
+}
+
+.inline-form {
+    display: inline;
+}

@@ -1,0 +1,193 @@
+/* ==========================================================================
+   CART MODULE
+   ========================================================================== */
+
+/* Main Layout & Container */
+.cart-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+.cart-header-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.cart-header-row h2,
+.cart-container h2 {
+    margin: 0;
+    font-size: 26px;
+    color: #1e293b;
+}
+
+/* ==========================================================================
+   EMPTY CART STATE
+   ========================================================================== */
+
+.empty-cart-msg {
+    text-align: center;
+    padding: 40px 0;
+}
+
+.empty-cart-text {
+    margin-bottom: 20px;
+    font-size: 1.1rem;
+    color: #888888;
+}
+
+.empty-cart-box {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 40px;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+}
+
+.empty-cart-box p {
+    font-size: 18px;
+    color: #64748b;
+    margin-bottom: 20px;
+}
+
+/* Primary & Action Buttons */
+.btn-primary {
+    display: inline-block;
+    padding: 10px 20px;
+    background: #c2185b;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 6px;
+    font-weight: 500;
+}
+
+.btn-go-shopping {
+    display: inline-block;
+    background: #e91e63;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-weight: bold;
+    font-size: 15px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-go-shopping:hover {
+    background: #d81b60;
+}
+
+/* ==========================================================================
+   CART CONTENT & ITEMS LIST
+   ========================================================================== */
+
+.cart-content {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.03);
+}
+
+.cart-actions-form {
+    margin: 0;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.btn-clear-cart {
+    background: #8b0000;
+    color: #ffffff;
+    border: none;
+    padding: 8px 16px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: 500;
+    transition: background-color 0.2s ease;
+}
+
+.btn-clear-cart:hover {
+    background: #a80000;
+}
+
+/* Item Rows */
+.cart-items-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.cart-item {
+    display: flex;
+    flex-direction: column;
+    padding: 14px 0;
+    border-bottom: 1px dashed #e2e8f0;
+}
+
+.cart-item:last-child {
+    border-bottom: none;
+}
+
+.cart-item-main-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-item-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.cart-item-check {
+    color: #10b981;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.cart-item-name {
+    font-weight: 600;
+    font-size: 16px;
+    color: #1e293b;
+}
+
+.cart-item-qty {
+    font-weight: bold;
+    font-size: 15px;
+    white-space: nowrap;
+    margin-left: 15px;
+    color: #0f172a;
+}
+
+/* ==========================================================================
+   RECIPE BREAKDOWN (PER ITEM)
+   ========================================================================== */
+
+.cart-item-breakdown {
+    margin-top: 6px;
+    padding-left: 28px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.cart-breakdown-entry {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.cart-item-recipe {
+    font-size: 13px;
+    color: #64748b;
+    font-style: italic;
+}
+
+.cart-breakdown-qty {
+    font-size: 13px;
+    color: #64748b;
+}

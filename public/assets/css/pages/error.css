@@ -1,0 +1,67 @@
+/* ==========================================================================
+   ERROR PAGES (404 / NOT FOUND)
+   ========================================================================== */
+
+/* Container Layout */
+.error-container {
+    max-width: 600px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+/* Card Component */
+.error-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    padding: 50px 30px;
+    text-align: center;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
+}
+
+/* Visuals & Typography */
+.error-icon {
+    font-size: 56px;
+    margin-bottom: 12px;
+}
+
+.error-code {
+    font-size: 48px;
+    font-weight: 800;
+    color: #e91e63;
+    margin: 0 0 10px 0;
+    line-height: 1;
+}
+
+.error-title {
+    font-size: 22px;
+    color: #1e293b;
+    margin: 0 0 12px 0;
+    font-weight: 700;
+}
+
+.error-description {
+    font-size: 15px;
+    color: #64748b;
+    margin: 0 auto 28px auto;
+    line-height: 1.6;
+    max-width: 420px;
+}
+
+/* Navigation Actions */
+.btn-go-catalog {
+    display: inline-block;
+    background-color: #e91e63;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 12px 28px;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 15px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+.btn-go-catalog:hover {
+    background-color: #d81b60;
+    transform: translateY(-1px);
+}

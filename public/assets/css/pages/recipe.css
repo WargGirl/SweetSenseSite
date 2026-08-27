@@ -1,0 +1,762 @@
+/* ==========================================================================
+   GLOBAL RECIPE LAYOUT & HEADER
+   ========================================================================== */
+
+.recipe-detail-container {
+    width: 100%;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.recipe-header {
+    width: 100%;
+}
+
+.recipe-header h1 {
+    font-size: 28px;
+    margin-bottom: 10px;
+    overflow-wrap: break-word;
+    word-break: break-word;
+}
+
+.recipe-meta-bar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+    align-items: center;
+    margin-top: 10px;
+    color: #666666;
+    font-size: 0.95rem;
+}
+
+.meta-rating {
+    color: #f39c12;
+    font-weight: 600;
+}
+
+.recipe-media {
+    margin: 20px 0 25px;
+    width: 100%;
+}
+
+.recipe-main-img {
+    width: 100%;
+    max-height: 420px;
+    object-fit: cover;
+    border-radius: 12px;
+    display: block;
+}
+
+.recipe-lead {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #333333;
+    margin-bottom: 25px;
+    overflow-wrap: break-word;
+    white-space: normal;
+}
+
+.recipe-afterword {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+/* ==========================================================================
+   ALERTS & UTILITIES
+   ========================================================================== */
+
+.is-hidden {
+    display: none !important;
+}
+
+.alert {
+    padding: 12px 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 0.95rem;
+}
+
+.alert-success {
+    background-color: #d1e7dd;
+    color: #0f5132;
+    border: 1px solid #badbcc;
+}
+
+/* ==========================================================================
+   INGREDIENTS CHECKLIST & SELECTION
+   ========================================================================== */
+
+.ingredients-section {
+    width: 100%;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.ingredients-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    width: 100%;
+}
+
+.sub-text {
+    font-size: 13px;
+    color: #64748b;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.btn-toggle-select {
+    background: #f1f5f9;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-toggle-select:hover {
+    background: #e2e8f0;
+}
+
+/* Ingredients List */
+.ingredients-list {
+    list-style: none;
+    padding: 0;
+    margin: 20px 0;
+    width: 100%;
+}
+
+.ingredient-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px dashed #e2e8f0;
+    gap: 20px;
+    width: 100%;
+}
+
+.ing-left {
+    flex: 1 1 auto;
+    min-width: 0;
+}
+
+.checkbox-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    cursor: pointer;
+    width: 100%;
+}
+
+.checkbox-container input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    flex-shrink: 0;
+    cursor: pointer;
+}
+
+.ing-checkbox:disabled ~ .ing-name,
+.checkbox-container:has(.ing-checkbox:disabled) {
+    cursor: inherit !important;
+}
+
+.ing-checkbox:not(:disabled) ~ .ing-name {
+    cursor: pointer;
+}
+
+.ing-name {
+    font-weight: 500;
+    color: #1e293b;
+    white-space: normal;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+    line-height: 1.4;
+}
+
+.ing-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+    justify-content: flex-end;
+}
+
+.ing-base-amount {
+    color: #64748b;
+    font-size: 14px;
+    font-weight: 500;
+}
+
+/* Quantity Control Box */
+.qty-control {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    background: #f8fafc;
+    border: 1px solid #cbd5e1;
+    padding: 2px 6px;
+    border-radius: 6px;
+}
+
+.qty-input {
+    width: 75px;
+    padding: 4px 6px;
+    border: 1px solid #cbd5e1;
+    border-radius: 4px;
+    text-align: center;
+    box-sizing: border-box;
+    font-weight: bold;
+}
+
+.qty-unit {
+    font-size: 12px;
+    color: #64748b;
+}
+
+/* Add to Cart Submit */
+.btn-add-to-cart {
+    width: 100%;
+    background: #e91e63;
+    color: #ffffff;
+    border: none;
+    padding: 12px;
+    border-radius: 8px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-add-to-cart:hover {
+    background: #d81b60;
+}
+
+.btn-add-to-cart:disabled,
+.btn-add-to-cart:disabled:hover {
+    cursor: not-allowed !important;
+    opacity: 0.4 !important;
+    background-color: #4a4a4a !important;
+    color: #888888 !important;
+    border-color: #4a4a4a !important;
+    transform: none !important;
+    box-shadow: none !important;
+}
+
+/* ==========================================================================
+   PREPARATION STEPS
+   ========================================================================== */
+
+.steps-section {
+    margin-top: 40px;
+}
+
+.steps-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-top: 15px;
+}
+
+.step-card {
+    background: #ffffff;
+    border: 1px solid #eef0f2;
+    border-radius: 12px;
+    padding: 24px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.03);
+}
+
+.step-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 12px;
+}
+
+.step-badge {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    background-color: #2b2d42;
+    color: #ffffff;
+    font-weight: bold;
+    border-radius: 50%;
+    font-size: 0.95rem;
+    flex-shrink: 0;
+}
+
+.step-heading {
+    margin: 0;
+    font-size: 1.15rem;
+    color: #1f2937;
+    font-weight: 600;
+}
+
+.step-text {
+    margin: 0 0 16px 0;
+    color: #4b5563;
+    line-height: 1.6;
+}
+
+.step-media {
+    width: 100%;
+    margin: 16px 0;
+    display: flex;
+    justify-content: center;
+}
+
+.step-media img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    max-height: 440px;
+    object-fit: cover;
+    border-radius: 10px;
+    display: block;
+}
+
+.step-tip-box {
+    margin-top: 16px;
+    padding: 12px 16px;
+    background-color: #fff9e6;
+    border-left: 4px solid #f59e0b;
+    border-radius: 6px;
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 0.95rem;
+    color: #4b5563;
+}
+
+.step-tip-box .tip-icon {
+    font-size: 1.1rem;
+    line-height: 1.2;
+}
+
+.step-tip-box strong {
+    color: #b45309;
+}
+
+/* ==========================================================================
+   AUTHOR NOTES & VIDEO
+   ========================================================================== */
+
+.notes-section {
+    margin-top: 30px;
+}
+
+.notes-card {
+    display: flex;
+    gap: 14px;
+    padding: 16px;
+    background: #fffbeb;
+    border-left: 4px solid #f59e0b;
+    border-radius: 6px;
+}
+
+.notes-icon {
+    font-size: 24px;
+}
+
+.notes-content h4 {
+    margin: 0 0 6px 0;
+    color: #92400e;
+}
+
+.notes-content p {
+    margin: 0;
+    color: #78350f;
+    line-height: 1.5;
+}
+
+.video-section {
+    margin-top: 35px;
+}
+
+.video-wrapper {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: 12px;
+}
+
+.video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 12px;
+}
+
+/* ==========================================================================
+   SOCIAL SHARE
+   ========================================================================== */
+
+.share-recipe-bar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 12px 18px;
+    margin: 30px 0 10px 0;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.share-label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #475569;
+}
+
+.share-buttons {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.share-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 6px;
+    transition: all 0.2s ease;
+    cursor: pointer;
+    border: none;
+}
+
+.share-x {
+    width: 34px;
+    height: 34px;
+    background-color: #000000;
+    color: #ffffff;
+    font-size: 15px;
+}
+
+.share-x:hover {
+    background-color: #333333;
+    transform: translateY(-1px);
+}
+
+.share-fb {
+    width: 34px;
+    height: 34px;
+    background-color: #1877f2;
+    color: #ffffff;
+    font-size: 16px;
+    font-family: sans-serif;
+}
+
+.share-fb:hover {
+    background-color: #0d65d9;
+    transform: translateY(-1px);
+}
+
+.share-copy {
+    padding: 7px 14px;
+    background-color: #ffffff;
+    color: #334155;
+    border: 1px solid #cbd5e1;
+    font-size: 13px;
+    font-weight: 600;
+    gap: 6px;
+}
+
+.share-copy:hover {
+    background-color: #f1f5f9;
+    border-color: #94a3b8;
+}
+
+.share-copy.copied {
+    background-color: #dcfce7;
+    color: #166534;
+    border-color: #86efac;
+}
+
+
+/* ==========================================================================
+   REVIEWS & RATINGS MODULE
+   ========================================================================== */
+
+.reviews-container {
+    margin-top: 40px;
+    padding-top: 30px;
+    border-top: 2px solid #f1f5f9;
+}
+
+.reviews-title {
+    font-size: 22px;
+    color: #1e293b;
+    margin-bottom: 20px;
+}
+
+.review-login-notice {
+    background: #f8fafc;
+    border: 1px dashed #cbd5e1;
+    padding: 16px;
+    border-radius: 8px;
+    font-size: 14px;
+    color: #64748b;
+    margin-bottom: 25px;
+}
+
+.review-login-notice a {
+    color: #e91e63;
+    font-weight: 600;
+    text-decoration: underline;
+}
+
+/* Review Form */
+.review-form-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 30px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.review-form-card.is-disabled {
+    background-color: #f8fafc;
+    border-color: #e2e8f0;
+}
+
+.review-form-card.is-disabled .review-textarea {
+    background-color: #ffffff;
+    color: #64748b;
+    cursor: not-allowed;
+}
+
+/* Star Rating Picker */
+.rating-picker {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.rating-picker label {
+    font-weight: 600;
+    font-size: 14px;
+    color: #475569;
+}
+
+.star-rating {
+    display: inline-flex;
+    flex-direction: row-reverse;
+    font-size: 24px;
+}
+
+.star-rating input {
+    display: none;
+}
+
+.star-rating label {
+    color: #cbd5e1;
+    cursor: pointer;
+    transition: color 0.15s ease;
+}
+
+.star-rating.readonly label {
+    cursor: default;
+}
+
+.star-rating input:checked ~ label,
+.star-rating label:hover,
+.star-rating label:hover ~ label {
+    color: #f59e0b;
+}
+
+/* Form Controls & Actions */
+.review-textarea {
+    width: 100%;
+    padding: 10px 14px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+    resize: vertical;
+    transition: border-color 0.2s ease;
+}
+
+.review-textarea:focus {
+    border-color: #e91e63;
+}
+
+.review-form-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-submit-review {
+    align-self: flex-start;
+    background-color: #e91e63;
+    color: #ffffff;
+    border: none;
+    padding: 8px 18px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-submit-review:not(:disabled):hover {
+    background-color: #d81b60;
+}
+
+.btn-submit-review:disabled,
+.btn-submit-review:disabled:hover {
+    background-color: #cbd5e1 !important;
+    color: #64748b !important;
+    cursor: inherit !important;
+    border: none !important;
+    box-shadow: none !important;
+    transform: none !important;
+}
+
+.btn-cancel-review {
+    background-color: #f1f5f9;
+    color: #475569;
+    border: 1px solid #cbd5e1;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-cancel-review:hover {
+    background-color: #e2e8f0;
+}
+
+/* Reviews List & Cards */
+.reviews-list {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.no-reviews {
+    color: #94a3b8;
+    font-style: italic;
+}
+
+.review-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 14px 18px;
+}
+
+.review-card.my-review-card {
+    border: 2px solid #fbcfe8;
+    background-color: #fffdfd;
+    box-shadow: 0 4px 12px rgba(233, 30, 99, 0.06);
+}
+
+.review-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+}
+
+.review-author {
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.my-review-badge {
+    background-color: #fdf2f8;
+    color: #db2777;
+    border: 1px solid #fbcfe8;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 20px;
+    text-transform: uppercase;
+}
+
+.review-stars {
+    color: #f59e0b;
+    letter-spacing: 2px;
+}
+
+.review-header-right {
+    margin-left: auto;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.review-date {
+    font-size: 12px;
+    color: #94a3b8;
+}
+
+.btn-edit-review {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 2px 6px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    line-height: 1;
+}
+
+.btn-edit-review:hover {
+    background-color: #fce7f3;
+    transform: scale(1.15);
+}
+
+.review-body {
+    margin-top: 8px;
+    font-size: 14px;
+    color: #334155;
+    line-height: 1.5;
+}
+
+/* Comment Translation */
+.btn-translate-comment {
+    background: none;
+    border: none;
+    padding: 0;
+    margin-top: 8px;
+    font-size: 12px;
+    color: #e91e63;
+    cursor: pointer;
+    font-weight: 600;
+    display: inline-block;
+    transition: opacity 0.2s ease;
+}
+
+.btn-translate-comment:hover {
+    text-decoration: underline;
+    opacity: 0.8;
+}
+
+.btn-translate-comment:disabled {
+    color: #94a3b8;
+    cursor: wait;
+    text-decoration: none;
+}

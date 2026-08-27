@@ -1,0 +1,416 @@
+/* ==========================================================================
+   AUTHENTICATION MODULE (LOGIN / REGISTRATION)
+   ========================================================================== */
+
+/* Card Container */
+.auth-card {
+    max-width: 420px;
+    margin: 40px auto;
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 32px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.auth-title {
+    text-align: center;
+    font-size: 22px;
+    color: #1e293b;
+    margin-bottom: 24px;
+}
+
+/* Form Controls & Inputs */
+.auth-form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.form-group label {
+    font-size: 13px;
+    font-weight: 600;
+    color: #475569;
+}
+
+.form-control {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+    background-color: #ffffff;
+    transition: border-color 0.2s ease;
+}
+
+.form-control:focus {
+    border-color: #e91e63;
+}
+
+/* Submit Action */
+.btn-auth-submit {
+    background-color: #e91e63;
+    color: #ffffff;
+    padding: 11px;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-top: 8px;
+    transition: background-color 0.2s ease;
+}
+
+.btn-auth-submit:hover {
+    background-color: #d81b60;
+}
+
+/* Auth Navigation & Footer */
+.auth-footer-text {
+    margin-top: 20px;
+    text-align: center;
+    font-size: 13px;
+    color: #64748b;
+}
+
+.auth-footer-text a {
+    color: #e91e63;
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.auth-footer-text a:hover {
+    text-decoration: underline;
+}
+
+/* ==========================================================================
+   USER PROFILE & EDIT MODULE
+   ========================================================================== */
+
+/* Profile Layout */
+.profile-container {
+    max-width: 550px;
+    margin: 40px auto;
+}
+
+.profile-card {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 30px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+/* Header & Avatar */
+.profile-header {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin-bottom: 24px;
+    padding-bottom: 18px;
+    border-bottom: 1px solid #f1f5f9;
+}
+
+.profile-avatar {
+    font-size: 44px;
+    line-height: 1;
+}
+
+.profile-info h2 {
+    margin: 0;
+    font-size: 20px;
+    color: #1e293b;
+}
+
+/* Roles & Badges */
+.role-badge {
+    display: inline-block;
+    padding: 3px 8px;
+    border-radius: 4px;
+    background-color: #f1f5f9;
+    color: #475569;
+    font-size: 12px;
+    font-weight: bold;
+    margin-top: 4px;
+}
+
+.badge-admin {
+    background-color: #fdf2f8;
+    color: #db2777;
+    border: 1px solid #fbcfe8;
+}
+
+/* User Info Details */
+.profile-details {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.detail-row {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #334155;
+}
+
+.detail-label {
+    color: #64748b;
+}
+
+.detail-val {
+    font-weight: 500;
+}
+
+.profile-status-active {
+    color: #16a34a;
+    font-weight: 600;
+}
+
+.profile-status-banned {
+    color: #dc2626;
+    font-weight: 600;
+}
+
+/* Top Moderation Controls (Admin Viewer) */
+.profile-moderation-top {
+    display: flex;
+    gap: 10px;
+    margin-top: 18px;
+    padding-top: 16px;
+    border-top: 1px solid #f1f5f9;
+}
+
+.profile-moderation-top .inline-form {
+    margin: 0;
+}
+
+/* Profile Interactive Section (Accordion + Bottom Actions) */
+.profile-interactive-section {
+    position: relative;
+    border-top: 1px solid #f1f5f9;
+    padding-top: 18px;
+    margin-top: 20px;
+}
+
+.profile-edit-accordion {
+    width: 100%;
+}
+
+.btn-toggle-edit {
+    display: inline-flex;
+    align-items: center;
+    padding: 8px 14px;
+    background-color: #ffffff;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: #334155;
+    cursor: pointer;
+    user-select: none;
+    list-style: none;
+    transition: all 0.2s ease;
+}
+
+.btn-toggle-edit::-webkit-details-marker {
+    display: none;
+}
+
+.btn-toggle-edit:hover {
+    background-color: #f8fafc;
+    border-color: #94a3b8;
+}
+
+/* Accordion Open State */
+.profile-edit-accordion[open] .btn-toggle-edit {
+    margin-bottom: 14px;
+    background-color: #fdf2f8;
+    border-color: #fbcfe8;
+    color: #db2777;
+}
+
+/* Profile Edit Form Controls */
+.profile-edit-form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 16px;
+}
+
+.form-group-profile {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    text-align: left;
+}
+
+.form-group-profile label {
+    font-size: 12px;
+    font-weight: 600;
+    color: #64748b;
+}
+
+.form-group-profile input {
+    width: 100%;
+    padding: 9px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 6px;
+    font-size: 13px;
+    outline: none;
+    box-sizing: border-box;
+    background: #ffffff;
+    transition: border-color 0.2s ease;
+}
+
+.form-group-profile input:focus {
+    border-color: #e91e63;
+}
+
+.btn-save {
+    width: 100%;
+    padding: 10px 0;
+    background: #e91e63;
+    color: #ffffff;
+    border: none;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 13px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.btn-save:hover {
+    background: #d81b60;
+}
+
+/* Bottom Action Buttons (Logout & Admin Link) */
+.profile-actions {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Aligns Logout button to the right when the accordion is collapsed */
+.profile-interactive-section:not(:has(.profile-edit-accordion[open])) .profile-actions {
+    position: absolute;
+    top: 18px;
+    right: 0;
+}
+
+.profile-actions .btn {
+    text-decoration: none;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    transition: all 0.2s ease;
+}
+
+.btn-admin {
+    background-color: #fdf2f8;
+    color: #db2777;
+    border: 1px solid #fbcfe8;
+}
+
+.btn-admin:hover {
+    background-color: #fce7f3;
+}
+
+.btn-danger {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.btn-danger:hover {
+    background-color: #fecaca;
+}
+
+/* Standalone Admin Moderation Panel */
+.admin-profile-controls {
+    margin-bottom: 24px;
+    padding: 18px;
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+}
+
+.admin-profile-controls h3 {
+    margin: 0 0 14px;
+    color: #1e293b;
+    font-size: 16px;
+}
+
+.profile-moderation-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.profile-moderation-actions form {
+    margin: 0;
+}
+
+/* Moderation Buttons */
+.btn-warning-action,
+.btn-ban,
+.btn-unban {
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 8px 12px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.btn-warning-action {
+    background: #fef3c7;
+    border-color: #fcd34d;
+    color: #92400e;
+}
+
+.btn-ban {
+    background: #fee2e2;
+    border-color: #fca5a5;
+    color: #b91c1c;
+}
+
+.btn-unban {
+    background: #dcfce7;
+    border-color: #86efac;
+    color: #166534;
+}
+
+/* ==========================================================================
+   ALERTS & NOTIFICATIONS
+   ========================================================================== */
+
+.alert-success {
+    background: #ecfdf5;
+    border: 1px solid #86efac;
+    color: #166534;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-bottom: 16px;
+}
+
+.alert-danger {
+    background-color: #fee2e2;
+    color: #dc2626;
+    border: 1px solid #fca5a5;
+    padding: 10px 14px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-bottom: 16px;
+}

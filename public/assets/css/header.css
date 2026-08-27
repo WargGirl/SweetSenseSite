@@ -1,0 +1,224 @@
+/* ==========================================================================
+   SITE HEADER & NAVIGATION
+   ========================================================================== */
+
+/* Main Header Container */
+.site-header {
+    position: relative;
+    background-color: #ffffff;
+    border-bottom: 1px solid #eeeeee;
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.03);
+}
+
+.header-content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* Logo */
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+    color: #e91e63;
+    text-decoration: none;
+}
+
+/* Primary Navigation */
+.main-nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #555555;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.main-nav a:hover {
+    color: #e91e63;
+}
+
+/* Language Switcher */
+.lang-switch a {
+    text-decoration: none;
+    color: #888888;
+    font-weight: bold;
+    padding: 2px 5px;
+}
+
+.lang-switch a.active {
+    color: #e91e63;
+    border-bottom: 2px solid #e91e63;
+}
+
+/* ==========================================================================
+   AUTHENTICATION BUTTONS & CONTROLS
+   ========================================================================== */
+
+.auth-links {
+    position: absolute;
+    right: 25px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-auth {
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+    padding: 6px 0;
+    border-radius: 6px;
+    text-align: center;
+    display: inline-block;
+    box-sizing: border-box;
+    transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+/* Login Action */
+.btn-login {
+    min-width: 65px;
+    color: #555555;
+}
+
+.btn-login:hover {
+    color: #e91e63;
+}
+
+/* Registration Action */
+.btn-register {
+    min-width: 115px;
+    background-color: #e91e63;
+    color: #ffffff;
+}
+
+.btn-register:hover {
+    background-color: #d81b60;
+}
+
+/* Base Profile & Logout Utilities */
+.btn-profile {
+    background-color: #f8f9fa;
+    color: #333333;
+    border: 1px solid #dddddd;
+}
+
+.btn-profile:hover {
+    background-color: #eeeeee;
+}
+
+.btn-logout {
+    color: #888888;
+    padding: 6px 8px;
+}
+
+.btn-logout:hover {
+    color: #e91e63;
+}
+
+/* ==========================================================================
+   USER ACCOUNT DROPDOWN
+   ========================================================================== */
+
+.user-dropdown {
+    position: relative;
+    display: inline-block;
+}
+
+/* Trigger Button */
+.user-dropdown-btn {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 8px;
+    width: 170px;
+    box-sizing: border-box;
+    background-color: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 7px 12px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #1e293b;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.user-dropdown-btn .user-name {
+    flex-grow: 1;
+    text-align: left;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.user-dropdown-btn:hover,
+.user-dropdown:hover .user-dropdown-btn {
+    background-color: #f8fafc;
+    border-color: #cbd5e1;
+}
+
+.dropdown-arrow {
+    font-size: 10px;
+    color: #64748b;
+    transition: transform 0.2s ease;
+}
+
+.user-dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+/* Dropdown Menu Container */
+.user-dropdown-menu {
+    display: none;
+    position: absolute;
+    left: 0;
+    right: 0;
+    width: 100%;
+    top: calc(100% + 4px);
+    background-color: #ffffff;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 6px 0;
+    box-sizing: border-box;
+    z-index: 1000;
+}
+
+.user-dropdown:hover .user-dropdown-menu {
+    display: block;
+}
+
+/* Dropdown Items */
+.dropdown-item {
+    display: block;
+    padding: 8px 12px;
+    font-size: 14px;
+    color: #334155;
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap;
+    transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f5f9;
+    color: #e91e63;
+}
+
+.dropdown-item.logout-item {
+    color: #ef4444;
+}
+
+.dropdown-item.logout-item:hover {
+    background-color: #fee2e2;
+    color: #dc2626;
+}
+
+.dropdown-divider {
+    height: 1px;
+    background-color: #e2e8f0;
+    margin: 4px 0;
+}

@@ -1,0 +1,13 @@
+@import url('base.css');
+@import url('header.css');
+@import url('footer.css');
+@import url('notification.css');
+@import url('pages/home.css');
+@import url('pages/catalog.css');
+@import url('pages/recipe.css');
+@import url('pages/cart.css');
+@import url('pages/auth.css');
+@import url('pages/error.css');
+@import url('pages/admin.css');
+@import url('pages/recipe_create.css');
+@import url('pages/support.css');
