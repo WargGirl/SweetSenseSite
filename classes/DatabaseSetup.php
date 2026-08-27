@@ -181,6 +181,16 @@ class DatabaseSetup
                 FOREIGN KEY (recipe_id) REFERENCES recipes(id) ON DELETE CASCADE,
                 FOREIGN KEY (unit_id) REFERENCES units(id)
             ) ENGINE=InnoDB",
+            "CREATE TABLE IF NOT EXISTS chat_messages (
+                id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+                from_user_id INT UNSIGNED NOT NULL,
+                to_user_id INT UNSIGNED NOT NULL,
+                message TEXT NOT NULL,
+                created_at DATETIME DEFAULT CURRENT_TIMESTAMP,
+                is_read TINYINT(1) NOT NULL DEFAULT 0,
+                FOREIGN KEY (from_user_id) REFERENCES users(id) ON DELETE CASCADE,
+                FOREIGN KEY (to_user_id) REFERENCES users(id) ON DELETE CASCADE
+            ) ENGINE=InnoDB",
         ];
 
         foreach ($tables as $sql) {
